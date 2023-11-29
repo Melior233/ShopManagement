@@ -1,7 +1,19 @@
 <template>
   <div class="login">
-    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form">
-      <h3 class="title">商铺管理系统</h3>
+    <div class="card">
+      <div class="card-left-side">
+        <img src="../assets/images/cover.jpg" />
+      </div>
+      <div class="card-right-side">
+        <div class="card-right-side-head">
+          <div class="logo">
+            <img src="../assets/images/logo-dark.svg" />
+            <h1>商铺管理系统</h1>
+          </div>
+        </div>
+        <div class="card-right-side-body">
+          <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form">
+      <!-- <h3 class="title"></h3> -->
       <el-form-item prop="username">
         <el-input
           v-model="loginForm.username"
@@ -54,9 +66,13 @@
         </div>
       </el-form-item>
     </el-form>
+        </div>
+      </div>
+      </div>
+   
     <!--  底部  -->
     <div class="el-login-footer">
-      <span>Copyright © 2018-2023 ruoyi.vip All Rights Reserved.</span>
+      <!-- <span>Copyright © 2018-2023 ruoyi.vip All Rights Reserved.</span> -->
     </div>
   </div>
 </template>
@@ -215,5 +231,86 @@ export default {
 }
 .login-code-img {
   height: 38px;
+}
+.card {
+  margin: auto;
+  background: #fff;
+}
+
+.card-left-side {
+  display:none;
+  width: 500px;
+  height: 500px;
+  background: #f2f4f9;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.card-right-side {
+  padding: 32px 0;
+  box-sizing: border-box;
+}
+
+.card-right-side-head {
+  margin-bottom: 24px;
+  padding: 0 24px;
+}
+
+.card-right-side-body {
+  padding: 0 0px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  margin: auto;
+
+  img {
+    height: 40px;
+  }
+
+  h1 {
+    margin: 0 0 0 16px;
+    font-size: 28px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+}
+@media (min-width: 500px) {
+  .card-right-side {
+    width: 500px;
+  }
+
+  .card-right-side-head
+   {
+    padding: 0 20%;
+  }
+
+  .card-right-side-body{
+    padding: 0 10%;
+  }
+
+  .card-right-side-head {
+    margin-bottom: 0px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .card {
+    display: flex;
+  }
+
+  .card-left-side {
+    display: block;
+  }
+
+  .card-right-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 </style>
