@@ -180,6 +180,7 @@
         <module>ShopManagement-quartz</module>
         <module>ShopManagement-generator</module>
         <module>ShopManagement-common</module>
+        <module>ShopManagement-biz</module>
     </modules>
     <packaging>pom</packaging>
 

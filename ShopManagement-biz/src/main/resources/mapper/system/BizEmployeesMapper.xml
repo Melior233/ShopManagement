@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shopmanagement.biz.mapper.BizEmployeesMapper">
+    
+    <resultMap type="BizEmployees" id="BizEmployeesResult">
+        <result property="id"    column="id"    />
+        <result property="tenantId"    column="tenant_id"    />
+        <result property="name"    column="name"    />
+        <result property="position"    column="position"    />
+        <result property="createdBy"    column="created_by"    />
+        <result property="createdTime"    column="created_time"    />
+        <result property="lastModifiedBy"    column="last_modified_by"    />
+        <result property="lastModifiedTime"    column="last_modified_time"    />
+    </resultMap>
+
+    <sql id="selectBizEmployeesVo">
+        select id, tenant_id, name, position, created_by, created_time, last_modified_by, last_modified_time from biz_employees
+    </sql>
+
+    <select id="selectBizEmployeesList" parameterType="BizEmployees" resultMap="BizEmployeesResult">
+        <include refid="selectBizEmployeesVo"/>
+        <where>  
+            <if test="tenantId != null "> and tenant_id = #{tenantId}</if>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="position != null  and position != ''"> and position = #{position}</if>
+            <if test="createdBy != null  and createdBy != ''"> and created_by = #{createdBy}</if>
+            <if test="createdTime != null "> and created_time = #{createdTime}</if>
+            <if test="lastModifiedBy != null  and lastModifiedBy != ''"> and last_modified_by = #{lastModifiedBy}</if>
+            <if test="lastModifiedTime != null "> and last_modified_time = #{lastModifiedTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectBizEmployeesById" parameterType="Long" resultMap="BizEmployeesResult">
+        <include refid="selectBizEmployeesVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertBizEmployees" parameterType="BizEmployees" useGeneratedKeys="true" keyProperty="id">
+        insert into biz_employees
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">tenant_id,</if>
+            <if test="name != null">name,</if>
+            <if test="position != null">position,</if>
+            <if test="createdBy != null">created_by,</if>
+            <if test="createdTime != null">created_time,</if>
+            <if test="lastModifiedBy != null">last_modified_by,</if>
+            <if test="lastModifiedTime != null">last_modified_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">#{tenantId},</if>
+            <if test="name != null">#{name},</if>
+            <if test="position != null">#{position},</if>
+            <if test="createdBy != null">#{createdBy},</if>
+            <if test="createdTime != null">#{createdTime},</if>
+            <if test="lastModifiedBy != null">#{lastModifiedBy},</if>
+            <if test="lastModifiedTime != null">#{lastModifiedTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBizEmployees" parameterType="BizEmployees">
+        update biz_employees
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="tenantId != null">tenant_id = #{tenantId},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="position != null">position = #{position},</if>
+            <if test="createdBy != null">created_by = #{createdBy},</if>
+            <if test="createdTime != null">created_time = #{createdTime},</if>
+            <if test="lastModifiedBy != null">last_modified_by = #{lastModifiedBy},</if>
+            <if test="lastModifiedTime != null">last_modified_time = #{lastModifiedTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBizEmployeesById" parameterType="Long">
+        delete from biz_employees where id = #{id}
+    </delete>
+
+    <delete id="deleteBizEmployeesByIds" parameterType="String">
+        delete from biz_employees where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

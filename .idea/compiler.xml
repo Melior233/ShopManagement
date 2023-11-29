@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ShopManagement-quartz" />
+        <module name="ShopManagement-system" />
+        <module name="ShopManagement-common" />
+        <module name="ShopManagement-framework" />
+        <module name="ShopManagement-biz" />
+        <module name="ShopManagement-generator" />
+        <module name="ShopManagement-admin" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

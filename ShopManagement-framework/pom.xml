@@ -58,7 +58,12 @@
             <groupId>com.shopmanagement</groupId>
             <artifactId>ShopManagement-system</artifactId>
         </dependency>
-
+<!--        业务模块-->
+        <dependency>
+            <groupId>com.shopmanagement</groupId>
+            <artifactId>ShopManagement-biz</artifactId>
+            <version>3.8.6</version>
+        </dependency>
     </dependencies>
 
 </project>

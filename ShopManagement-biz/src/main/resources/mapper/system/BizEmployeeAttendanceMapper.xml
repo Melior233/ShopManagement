@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shopmanagement.biz.mapper.BizEmployeeAttendanceMapper">
+    
+    <resultMap type="BizEmployeeAttendance" id="BizEmployeeAttendanceResult">
+        <result property="id"    column="id"    />
+        <result property="tenantId"    column="tenant_id"    />
+        <result property="employeeId"    column="employee_id"    />
+        <result property="checkIn"    column="check_in"    />
+        <result property="checkOut"    column="check_out"    />
+        <result property="createdBy"    column="created_by"    />
+        <result property="createdTime"    column="created_time"    />
+        <result property="lastModifiedBy"    column="last_modified_by"    />
+        <result property="lastModifiedTime"    column="last_modified_time"    />
+    </resultMap>
+
+    <sql id="selectBizEmployeeAttendanceVo">
+        select id, tenant_id, employee_id, check_in, check_out, created_by, created_time, last_modified_by, last_modified_time from biz_employee_attendance
+    </sql>
+
+    <select id="selectBizEmployeeAttendanceList" parameterType="BizEmployeeAttendance" resultMap="BizEmployeeAttendanceResult">
+        <include refid="selectBizEmployeeAttendanceVo"/>
+        <where>  
+            <if test="tenantId != null "> and tenant_id = #{tenantId}</if>
+            <if test="employeeId != null "> and employee_id = #{employeeId}</if>
+            <if test="checkIn != null "> and check_in = #{checkIn}</if>
+            <if test="checkOut != null "> and check_out = #{checkOut}</if>
+            <if test="createdBy != null  and createdBy != ''"> and created_by = #{createdBy}</if>
+            <if test="createdTime != null "> and created_time = #{createdTime}</if>
+            <if test="lastModifiedBy != null  and lastModifiedBy != ''"> and last_modified_by = #{lastModifiedBy}</if>
+            <if test="lastModifiedTime != null "> and last_modified_time = #{lastModifiedTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectBizEmployeeAttendanceById" parameterType="Long" resultMap="BizEmployeeAttendanceResult">
+        <include refid="selectBizEmployeeAttendanceVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertBizEmployeeAttendance" parameterType="BizEmployeeAttendance" useGeneratedKeys="true" keyProperty="id">
+        insert into biz_employee_attendance
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">tenant_id,</if>
+            <if test="employeeId != null">employee_id,</if>
+            <if test="checkIn != null">check_in,</if>
+            <if test="checkOut != null">check_out,</if>
+            <if test="createdBy != null">created_by,</if>
+            <if test="createdTime != null">created_time,</if>
+            <if test="lastModifiedBy != null">last_modified_by,</if>
+            <if test="lastModifiedTime != null">last_modified_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">#{tenantId},</if>
+            <if test="employeeId != null">#{employeeId},</if>
+            <if test="checkIn != null">#{checkIn},</if>
+            <if test="checkOut != null">#{checkOut},</if>
+            <if test="createdBy != null">#{createdBy},</if>
+            <if test="createdTime != null">#{createdTime},</if>
+            <if test="lastModifiedBy != null">#{lastModifiedBy},</if>
+            <if test="lastModifiedTime != null">#{lastModifiedTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBizEmployeeAttendance" parameterType="BizEmployeeAttendance">
+        update biz_employee_attendance
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="tenantId != null">tenant_id = #{tenantId},</if>
+            <if test="employeeId != null">employee_id = #{employeeId},</if>
+            <if test="checkIn != null">check_in = #{checkIn},</if>
+            <if test="checkOut != null">check_out = #{checkOut},</if>
+            <if test="createdBy != null">created_by = #{createdBy},</if>
+            <if test="createdTime != null">created_time = #{createdTime},</if>
+            <if test="lastModifiedBy != null">last_modified_by = #{lastModifiedBy},</if>
+            <if test="lastModifiedTime != null">last_modified_time = #{lastModifiedTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBizEmployeeAttendanceById" parameterType="Long">
+        delete from biz_employee_attendance where id = #{id}
+    </delete>
+
+    <delete id="deleteBizEmployeeAttendanceByIds" parameterType="String">
+        delete from biz_employee_attendance where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

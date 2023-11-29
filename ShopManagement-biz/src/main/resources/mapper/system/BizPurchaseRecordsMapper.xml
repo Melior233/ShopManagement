@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shopmanagement.biz.mapper.BizPurchaseRecordsMapper">
+    
+    <resultMap type="BizPurchaseRecords" id="BizPurchaseRecordsResult">
+        <result property="id"    column="id"    />
+        <result property="tenantId"    column="tenant_id"    />
+        <result property="productId"    column="product_id"    />
+        <result property="quantity"    column="quantity"    />
+        <result property="purchaseDate"    column="purchase_date"    />
+        <result property="createdBy"    column="created_by"    />
+        <result property="createdTime"    column="created_time"    />
+        <result property="lastModifiedBy"    column="last_modified_by"    />
+        <result property="lastModifiedTime"    column="last_modified_time"    />
+    </resultMap>
+
+    <sql id="selectBizPurchaseRecordsVo">
+        select id, tenant_id, product_id, quantity, purchase_date, created_by, created_time, last_modified_by, last_modified_time from biz_purchase_records
+    </sql>
+
+    <select id="selectBizPurchaseRecordsList" parameterType="BizPurchaseRecords" resultMap="BizPurchaseRecordsResult">
+        <include refid="selectBizPurchaseRecordsVo"/>
+        <where>  
+            <if test="tenantId != null "> and tenant_id = #{tenantId}</if>
+            <if test="productId != null "> and product_id = #{productId}</if>
+            <if test="quantity != null "> and quantity = #{quantity}</if>
+            <if test="purchaseDate != null "> and purchase_date = #{purchaseDate}</if>
+            <if test="createdBy != null  and createdBy != ''"> and created_by = #{createdBy}</if>
+            <if test="createdTime != null "> and created_time = #{createdTime}</if>
+            <if test="lastModifiedBy != null  and lastModifiedBy != ''"> and last_modified_by = #{lastModifiedBy}</if>
+            <if test="lastModifiedTime != null "> and last_modified_time = #{lastModifiedTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectBizPurchaseRecordsById" parameterType="Long" resultMap="BizPurchaseRecordsResult">
+        <include refid="selectBizPurchaseRecordsVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertBizPurchaseRecords" parameterType="BizPurchaseRecords" useGeneratedKeys="true" keyProperty="id">
+        insert into biz_purchase_records
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">tenant_id,</if>
+            <if test="productId != null">product_id,</if>
+            <if test="quantity != null">quantity,</if>
+            <if test="purchaseDate != null">purchase_date,</if>
+            <if test="createdBy != null">created_by,</if>
+            <if test="createdTime != null">created_time,</if>
+            <if test="lastModifiedBy != null">last_modified_by,</if>
+            <if test="lastModifiedTime != null">last_modified_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="tenantId != null">#{tenantId},</if>
+            <if test="productId != null">#{productId},</if>
+            <if test="quantity != null">#{quantity},</if>
+            <if test="purchaseDate != null">#{purchaseDate},</if>
+            <if test="createdBy != null">#{createdBy},</if>
+            <if test="createdTime != null">#{createdTime},</if>
+            <if test="lastModifiedBy != null">#{lastModifiedBy},</if>
+            <if test="lastModifiedTime != null">#{lastModifiedTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBizPurchaseRecords" parameterType="BizPurchaseRecords">
+        update biz_purchase_records
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="tenantId != null">tenant_id = #{tenantId},</if>
+            <if test="productId != null">product_id = #{productId},</if>
+            <if test="quantity != null">quantity = #{quantity},</if>
+            <if test="purchaseDate != null">purchase_date = #{purchaseDate},</if>
+            <if test="createdBy != null">created_by = #{createdBy},</if>
+            <if test="createdTime != null">created_time = #{createdTime},</if>
+            <if test="lastModifiedBy != null">last_modified_by = #{lastModifiedBy},</if>
+            <if test="lastModifiedTime != null">last_modified_time = #{lastModifiedTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBizPurchaseRecordsById" parameterType="Long">
+        delete from biz_purchase_records where id = #{id}
+    </delete>
+
+    <delete id="deleteBizPurchaseRecordsByIds" parameterType="String">
+        delete from biz_purchase_records where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
