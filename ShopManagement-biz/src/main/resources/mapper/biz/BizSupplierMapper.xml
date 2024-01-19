@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shopmanagement.biz.mapper.BizSupplierMapper">
+    
+    <resultMap type="BizSupplier" id="BizSupplierResult">
+        <result property="id"    column="id"    />
+        <result property="supplierName"    column="supplier_name"    />
+        <result property="supplierManager"    column="supplier_manager"    />
+        <result property="supplierPhone"    column="supplier_phone"    />
+        <result property="supplierAddress"    column="supplier_address"    />
+        <result property="tenantId"    column="tenant_id"    />
+        <result property="createdBy"    column="created_by"    />
+        <result property="createdTime"    column="created_time"    />
+        <result property="lastModifiedBy"    column="last_modified_by"    />
+        <result property="lastModifiedTime"    column="last_modified_time"    />
+    </resultMap>
+
+    <sql id="selectBizSupplierVo">
+        select id, supplier_name, supplier_manager, supplier_phone, supplier_address, tenant_id, created_by, created_time, last_modified_by, last_modified_time from biz_supplier
+    </sql>
+
+    <select id="selectBizSupplierList" parameterType="BizSupplier" resultMap="BizSupplierResult">
+        <include refid="selectBizSupplierVo"/>
+        <where>  
+            <if test="supplierName != null  and supplierName != ''"> and supplier_name like concat('%', #{supplierName}, '%')</if>
+            <if test="supplierPhone != null  and supplierPhone != ''"> and supplier_phone = #{supplierPhone}</if>
+            <if test="supplierAddress != null  and supplierAddress != ''"> and supplier_address = #{supplierAddress}</if>
+        </where>
+    </select>
+    
+    <select id="selectBizSupplierById" parameterType="Long" resultMap="BizSupplierResult">
+        <include refid="selectBizSupplierVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertBizSupplier" parameterType="BizSupplier" useGeneratedKeys="true" keyProperty="id">
+        insert into biz_supplier
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="supplierName != null">supplier_name,</if>
+            <if test="supplierManager != null">supplier_manager,</if>
+            <if test="supplierPhone != null">supplier_phone,</if>
+            <if test="supplierAddress != null">supplier_address,</if>
+            <if test="tenantId != null">tenant_id,</if>
+            <if test="createdBy != null">created_by,</if>
+            <if test="createdTime != null">created_time,</if>
+            <if test="lastModifiedBy != null">last_modified_by,</if>
+            <if test="lastModifiedTime != null">last_modified_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="supplierName != null">#{supplierName},</if>
+            <if test="supplierManager != null">#{supplierManager},</if>
+            <if test="supplierPhone != null">#{supplierPhone},</if>
+            <if test="supplierAddress != null">#{supplierAddress},</if>
+            <if test="tenantId != null">#{tenantId},</if>
+            <if test="createdBy != null">#{createdBy},</if>
+            <if test="createdTime != null">#{createdTime},</if>
+            <if test="lastModifiedBy != null">#{lastModifiedBy},</if>
+            <if test="lastModifiedTime != null">#{lastModifiedTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBizSupplier" parameterType="BizSupplier">
+        update biz_supplier
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="supplierName != null">supplier_name = #{supplierName},</if>
+            <if test="supplierManager != null">supplier_manager = #{supplierManager},</if>
+            <if test="supplierPhone != null">supplier_phone = #{supplierPhone},</if>
+            <if test="supplierAddress != null">supplier_address = #{supplierAddress},</if>
+            <if test="tenantId != null">tenant_id = #{tenantId},</if>
+            <if test="createdBy != null">created_by = #{createdBy},</if>
+            <if test="createdTime != null">created_time = #{createdTime},</if>
+            <if test="lastModifiedBy != null">last_modified_by = #{lastModifiedBy},</if>
+            <if test="lastModifiedTime != null">last_modified_time = #{lastModifiedTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBizSupplierById" parameterType="Long">
+        delete from biz_supplier where id = #{id}
+    </delete>
+
+    <delete id="deleteBizSupplierByIds" parameterType="String">
+        delete from biz_supplier where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

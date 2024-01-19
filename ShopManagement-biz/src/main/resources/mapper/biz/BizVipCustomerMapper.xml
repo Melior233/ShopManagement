@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shopmanagement.biz.mapper.BizVipCustomerMapper">
+    
+    <resultMap type="BizVipCustomer" id="BizVipCustomerResult">
+        <result property="vipCustomerId"    column="vip_customer_id"    />
+        <result property="name"    column="name"    />
+        <result property="phone"    column="phone"    />
+        <result property="vipLevel"    column="vip_level"    />
+        <result property="points"    column="points"    />
+        <result property="tenantId"    column="tenant_id"    />
+        <result property="createdBy"    column="created_by"    />
+        <result property="createdTime"    column="created_time"    />
+        <result property="lastModifiedBy"    column="last_modified_by"    />
+        <result property="lastModifiedTime"    column="last_modified_time"    />
+    </resultMap>
+
+    <sql id="selectBizVipCustomerVo">
+        select vip_customer_id, name, phone, vip_level, points, tenant_id, created_by, created_time, last_modified_by, last_modified_time from biz_vip_customer
+    </sql>
+
+    <select id="selectBizVipCustomerList" parameterType="BizVipCustomer" resultMap="BizVipCustomerResult">
+        <include refid="selectBizVipCustomerVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="phone != null  and phone != ''"> and phone = #{phone}</if>
+            <if test="vipLevel != null "> and vip_level = #{vipLevel}</if>
+        </where>
+    </select>
+    
+    <select id="selectBizVipCustomerByVipCustomerId" parameterType="Long" resultMap="BizVipCustomerResult">
+        <include refid="selectBizVipCustomerVo"/>
+        where vip_customer_id = #{vipCustomerId}
+    </select>
+        
+    <insert id="insertBizVipCustomer" parameterType="BizVipCustomer" useGeneratedKeys="true" keyProperty="vipCustomerId">
+        insert into biz_vip_customer
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+            <if test="phone != null">phone,</if>
+            <if test="vipLevel != null">vip_level,</if>
+            <if test="points != null">points,</if>
+            <if test="tenantId != null">tenant_id,</if>
+            <if test="createdBy != null">created_by,</if>
+            <if test="createdTime != null">created_time,</if>
+            <if test="lastModifiedBy != null">last_modified_by,</if>
+            <if test="lastModifiedTime != null">last_modified_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="phone != null">#{phone},</if>
+            <if test="vipLevel != null">#{vipLevel},</if>
+            <if test="points != null">#{points},</if>
+            <if test="tenantId != null">#{tenantId},</if>
+            <if test="createdBy != null">#{createdBy},</if>
+            <if test="createdTime != null">#{createdTime},</if>
+            <if test="lastModifiedBy != null">#{lastModifiedBy},</if>
+            <if test="lastModifiedTime != null">#{lastModifiedTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBizVipCustomer" parameterType="BizVipCustomer">
+        update biz_vip_customer
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="vipLevel != null">vip_level = #{vipLevel},</if>
+            <if test="points != null">points = #{points},</if>
+            <if test="tenantId != null">tenant_id = #{tenantId},</if>
+            <if test="createdBy != null">created_by = #{createdBy},</if>
+            <if test="createdTime != null">created_time = #{createdTime},</if>
+            <if test="lastModifiedBy != null">last_modified_by = #{lastModifiedBy},</if>
+            <if test="lastModifiedTime != null">last_modified_time = #{lastModifiedTime},</if>
+        </trim>
+        where vip_customer_id = #{vipCustomerId}
+    </update>
+
+    <delete id="deleteBizVipCustomerByVipCustomerId" parameterType="Long">
+        delete from biz_vip_customer where vip_customer_id = #{vipCustomerId}
+    </delete>
+
+    <delete id="deleteBizVipCustomerByVipCustomerIds" parameterType="String">
+        delete from biz_vip_customer where vip_customer_id in 
+        <foreach item="vipCustomerId" collection="array" open="(" separator="," close=")">
+            #{vipCustomerId}
+        </foreach>
+    </delete>
+</mapper>
