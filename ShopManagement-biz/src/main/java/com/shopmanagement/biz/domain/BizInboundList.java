@@ -12,7 +12,7 @@ import com.shopmanagement.common.core.domain.BaseEntity;
  * 入库清单管理对象 biz_inbound_list
  * 
  * @author zr
- * @date 2024-01-19
+ * @date 2024-02-27
  */
 public class BizInboundList extends BaseEntity
 {
@@ -49,8 +49,8 @@ public class BizInboundList extends BaseEntity
     @Excel(name = "入库规格")
     private String productSpecification;
 
-    /** 入库姓名 */
-    @Excel(name = "入库姓名")
+    /** 入库人姓名 */
+    @Excel(name = "入库人姓名")
     private String inboundPersonName;
 
     /** 供应商名称 */

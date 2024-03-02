@@ -3,7 +3,6 @@ package com.shopmanagement.biz.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -25,14 +24,17 @@ import com.shopmanagement.common.core.page.TableDataInfo;
  * VIP客户信息Controller
  * 
  * @author zr
- * @date 2024-01-19
+ * @date 2024-02-27
  */
 @RestController
 @RequestMapping("/biz/customer")
 public class BizVipCustomerController extends BaseController
 {
-    @Autowired
-    private IBizVipCustomerService bizVipCustomerService;
+    private final IBizVipCustomerService bizVipCustomerService;
+
+    public BizVipCustomerController(IBizVipCustomerService bizVipCustomerService) {
+        this.bizVipCustomerService = bizVipCustomerService;
+    }
 
     /**
      * 查询VIP客户信息列表

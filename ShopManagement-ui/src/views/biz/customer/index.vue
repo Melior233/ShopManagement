@@ -81,9 +81,8 @@
 
     <el-table v-loading="loading" :data="customerList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="VIP客户ID" align="center" prop="vipCustomerId" />
-      <el-table-column label="姓名" align="center" prop="name" />
-      <el-table-column label="电话" align="center" prop="phone" />
+      <el-table-column label="客户姓名" align="center" prop="name" />
+      <el-table-column label="客户电话" align="center" prop="phone" />
       <el-table-column label="VIP等级" align="center" prop="vipLevel">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.biz_vip_level" :value="scope.row.vipLevel"/>
@@ -139,31 +138,6 @@
         </el-form-item>
         <el-form-item label="积分" prop="points">
           <el-input v-model="form.points" placeholder="请输入积分" />
-        </el-form-item>
-        <el-form-item label="租户ID" prop="tenantId">
-          <el-input v-model="form.tenantId" placeholder="请输入租户ID" />
-        </el-form-item>
-        <el-form-item label="创建者" prop="createdBy">
-          <el-input v-model="form.createdBy" placeholder="请输入创建者" />
-        </el-form-item>
-        <el-form-item label="创建时间" prop="createdTime">
-          <el-date-picker clearable
-            v-model="form.createdTime"
-            type="date"
-            value-format="yyyy-MM-dd"
-            placeholder="请选择创建时间">
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item label="最后修改者" prop="lastModifiedBy">
-          <el-input v-model="form.lastModifiedBy" placeholder="请输入最后修改者" />
-        </el-form-item>
-        <el-form-item label="最后修改时间" prop="lastModifiedTime">
-          <el-date-picker clearable
-            v-model="form.lastModifiedTime"
-            type="date"
-            value-format="yyyy-MM-dd"
-            placeholder="请选择最后修改时间">
-          </el-date-picker>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">

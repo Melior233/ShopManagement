@@ -1,7 +1,7 @@
 package com.shopmanagement.biz.service.impl;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import com.shopmanagement.biz.mapper.BizSupplierMapper;
 import com.shopmanagement.biz.domain.BizSupplier;
@@ -11,13 +11,16 @@ import com.shopmanagement.biz.service.IBizSupplierService;
  * 供应商信息Service业务层处理
  * 
  * @author zr
- * @date 2024-01-19
+ * @date 2024-02-27
  */
 @Service
 public class BizSupplierServiceImpl implements IBizSupplierService 
 {
-    @Autowired
-    private BizSupplierMapper bizSupplierMapper;
+    private final BizSupplierMapper bizSupplierMapper;
+
+    public BizSupplierServiceImpl(BizSupplierMapper bizSupplierMapper) {
+        this.bizSupplierMapper = bizSupplierMapper;
+    }
 
     /**
      * 查询供应商信息

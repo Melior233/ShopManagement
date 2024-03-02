@@ -7,7 +7,7 @@ import com.shopmanagement.biz.domain.BizProduct;
  * 商品信息管理Service接口
  * 
  * @author zr
- * @date 2024-01-19
+ * @date 2024-03-02
  */
 public interface IBizProductService 
 {

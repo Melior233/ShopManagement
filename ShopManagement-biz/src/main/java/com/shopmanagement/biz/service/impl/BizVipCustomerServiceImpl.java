@@ -1,7 +1,7 @@
 package com.shopmanagement.biz.service.impl;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import com.shopmanagement.biz.mapper.BizVipCustomerMapper;
 import com.shopmanagement.biz.domain.BizVipCustomer;
@@ -11,13 +11,16 @@ import com.shopmanagement.biz.service.IBizVipCustomerService;
  * VIP客户信息Service业务层处理
  * 
  * @author zr
- * @date 2024-01-19
+ * @date 2024-02-27
  */
 @Service
 public class BizVipCustomerServiceImpl implements IBizVipCustomerService 
 {
-    @Autowired
-    private BizVipCustomerMapper bizVipCustomerMapper;
+    private final BizVipCustomerMapper bizVipCustomerMapper;
+
+    public BizVipCustomerServiceImpl(BizVipCustomerMapper bizVipCustomerMapper) {
+        this.bizVipCustomerMapper = bizVipCustomerMapper;
+    }
 
     /**
      * 查询VIP客户信息

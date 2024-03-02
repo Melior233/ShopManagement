@@ -3,7 +3,6 @@ package com.shopmanagement.biz.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -25,14 +24,17 @@ import com.shopmanagement.common.core.page.TableDataInfo;
  * 备忘录信息Controller
  * 
  * @author zr
- * @date 2024-01-19
+ * @date 2024-02-27
  */
 @RestController
 @RequestMapping("/biz/memo")
 public class BizMemoController extends BaseController
 {
-    @Autowired
-    private IBizMemoService bizMemoService;
+    private final IBizMemoService bizMemoService;
+
+    public BizMemoController(IBizMemoService bizMemoService) {
+        this.bizMemoService = bizMemoService;
+    }
 
     /**
      * 查询备忘录信息列表

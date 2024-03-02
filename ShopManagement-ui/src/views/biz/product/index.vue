@@ -1,6 +1,14 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
+      <el-form-item label="商品编号" prop="productNumber">
+        <el-input
+          v-model="queryParams.productNumber"
+          placeholder="请输入商品编号"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
       <el-form-item label="商品名称" prop="productName">
         <el-input
           v-model="queryParams.productName"
@@ -9,10 +17,68 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
+      <el-form-item label="商品单位" prop="productUnit">
+        <el-input
+          v-model="queryParams.productUnit"
+          placeholder="请输入商品单位"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
       <el-form-item label="商品类别" prop="productCategory">
         <el-select v-model="queryParams.productCategory" placeholder="请选择商品类别" clearable>
           <el-option
             v-for="dict in dict.type.biz_product_category"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+          />
+        </el-select>
+      </el-form-item>
+      <el-form-item label="商品库存" prop="productStock">
+        <el-input
+          v-model="queryParams.productStock"
+          placeholder="请输入商品库存"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="商品所属仓库ID" prop="warehouseId">
+        <el-input
+          v-model="queryParams.warehouseId"
+          placeholder="请输入商品所属仓库ID"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="商品单价" prop="unitPrice">
+        <el-input
+          v-model="queryParams.unitPrice"
+          placeholder="请输入商品单价"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="商品进货价" prop="purchasePrice">
+        <el-input
+          v-model="queryParams.purchasePrice"
+          placeholder="请输入商品进货价"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="告警阈值" prop="alarmThreshold">
+        <el-input
+          v-model="queryParams.alarmThreshold"
+          placeholder="请输入告警阈值"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="是否告警" prop="isalarm">
+        <el-select v-model="queryParams.isalarm" placeholder="请选择是否告警" clearable>
+          <el-option
+            v-for="dict in dict.type.biz_is_inbound"
             :key="dict.value"
             :label="dict.label"
             :value="dict.value"
@@ -73,7 +139,7 @@
 
     <el-table v-loading="loading" :data="productList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="商品ID" align="center" prop="productId" />
+      <el-table-column label="商品编号" align="center" prop="productNumber" />
       <el-table-column label="商品名称" align="center" prop="productName" />
       <el-table-column label="商品单位" align="center" prop="productUnit" />
       <el-table-column label="商品类别" align="center" prop="productCategory">
@@ -83,6 +149,14 @@
       </el-table-column>
       <el-table-column label="商品库存" align="center" prop="productStock" />
       <el-table-column label="商品所属仓库ID" align="center" prop="warehouseId" />
+      <el-table-column label="商品单价" align="center" prop="unitPrice" />
+      <el-table-column label="商品进货价" align="center" prop="purchasePrice" />
+      <el-table-column label="告警阈值" align="center" prop="alarmThreshold" />
+      <el-table-column label="是否告警" align="center" prop="isalarm">
+        <template slot-scope="scope">
+          <dict-tag :options="dict.type.biz_is_inbound" :value="scope.row.isalarm"/>
+        </template>
+      </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -114,6 +188,9 @@
     <!-- 添加或修改商品信息管理对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
+        <el-form-item label="商品编号" prop="productNumber">
+          <el-input v-model="form.productNumber" placeholder="请输入商品编号" />
+        </el-form-item>
         <el-form-item label="商品名称" prop="productName">
           <el-input v-model="form.productName" placeholder="请输入商品名称" />
         </el-form-item>
@@ -136,30 +213,24 @@
         <el-form-item label="商品所属仓库ID" prop="warehouseId">
           <el-input v-model="form.warehouseId" placeholder="请输入商品所属仓库ID" />
         </el-form-item>
-        <el-form-item label="租户ID" prop="tenantId">
-          <el-input v-model="form.tenantId" placeholder="请输入租户ID" />
+        <el-form-item label="商品单价" prop="unitPrice">
+          <el-input v-model="form.unitPrice" placeholder="请输入商品单价" />
         </el-form-item>
-        <el-form-item label="创建者" prop="createdBy">
-          <el-input v-model="form.createdBy" placeholder="请输入创建者" />
+        <el-form-item label="商品进货价" prop="purchasePrice">
+          <el-input v-model="form.purchasePrice" placeholder="请输入商品进货价" />
         </el-form-item>
-        <el-form-item label="创建时间" prop="createdTime">
-          <el-date-picker clearable
-            v-model="form.createdTime"
-            type="date"
-            value-format="yyyy-MM-dd"
-            placeholder="请选择创建时间">
-          </el-date-picker>
+        <el-form-item label="告警阈值" prop="alarmThreshold">
+          <el-input v-model="form.alarmThreshold" placeholder="请输入告警阈值" />
         </el-form-item>
-        <el-form-item label="最后修改者" prop="lastModifiedBy">
-          <el-input v-model="form.lastModifiedBy" placeholder="请输入最后修改者" />
-        </el-form-item>
-        <el-form-item label="最后修改时间" prop="lastModifiedTime">
-          <el-date-picker clearable
-            v-model="form.lastModifiedTime"
-            type="date"
-            value-format="yyyy-MM-dd"
-            placeholder="请选择最后修改时间">
-          </el-date-picker>
+        <el-form-item label="是否告警" prop="isalarm">
+          <el-select v-model="form.isalarm" placeholder="请选择是否告警">
+            <el-option
+              v-for="dict in dict.type.biz_is_inbound"
+              :key="dict.value"
+              :label="dict.label"
+              :value="parseInt(dict.value)"
+            ></el-option>
+          </el-select>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -175,7 +246,7 @@ import { listProduct, getProduct, delProduct, addProduct, updateProduct } from "
 
 export default {
   name: "Product",
-  dicts: ['biz_product_category'],
+  dicts: ['biz_is_inbound', 'biz_product_category'],
   data() {
     return {
       // 遮罩层
@@ -200,13 +271,32 @@ export default {
       queryParams: {
         pageNum: 1,
         pageSize: 10,
+        productNumber: null,
         productName: null,
+        productUnit: null,
         productCategory: null,
+        productStock: null,
+        warehouseId: null,
+        unitPrice: null,
+        purchasePrice: null,
+        alarmThreshold: null,
+        isalarm: null,
+        tenantId: null,
+        createdBy: null,
+        createdTime: null,
+        lastModifiedBy: null,
+        lastModifiedTime: null
       },
       // 表单参数
       form: {},
       // 表单校验
       rules: {
+        productNumber: [
+          { required: true, message: "商品编号不能为空", trigger: "blur" }
+        ],
+        productCategory: [
+          { required: true, message: "商品类别不能为空", trigger: "change" }
+        ],
       }
     };
   },
@@ -232,11 +322,16 @@ export default {
     reset() {
       this.form = {
         productId: null,
+        productNumber: null,
         productName: null,
         productUnit: null,
         productCategory: null,
         productStock: null,
         warehouseId: null,
+        unitPrice: null,
+        purchasePrice: null,
+        alarmThreshold: null,
+        isalarm: null,
         tenantId: null,
         createdBy: null,
         createdTime: null,

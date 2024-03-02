@@ -121,6 +121,11 @@ swagger:
   # 请求前缀
   pathMapping: /dev-api
 
+author: zr
+packageName: com.shopmanagement.biz
+autoRemove: true
+tablePrefix: biz
+
 # 防止XSS攻击
 xss:
   # 过滤开关

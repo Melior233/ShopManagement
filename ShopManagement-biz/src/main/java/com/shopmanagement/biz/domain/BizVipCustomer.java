@@ -11,7 +11,7 @@ import com.shopmanagement.common.core.domain.BaseEntity;
  * VIP客户信息对象 biz_vip_customer
  * 
  * @author zr
- * @date 2024-01-19
+ * @date 2024-02-27
  */
 public class BizVipCustomer extends BaseEntity
 {

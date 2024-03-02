@@ -11,7 +11,7 @@ import com.shopmanagement.common.core.domain.BaseEntity;
  * 供应商信息对象 biz_supplier
  * 
  * @author zr
- * @date 2024-01-19
+ * @date 2024-02-27
  */
 public class BizSupplier extends BaseEntity
 {

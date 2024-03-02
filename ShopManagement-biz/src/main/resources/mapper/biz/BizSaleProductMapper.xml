@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shopmanagement.biz.mapper.BizSaleProductMapper">
+    
+    <resultMap type="BizSaleProduct" id="BizSaleProductResult">
+        <result property="productId"    column="product_id"    />
+        <result property="productNumber"    column="product_number"    />
+        <result property="productName"    column="product_name"    />
+        <result property="productUnit"    column="product_unit"    />
+        <result property="productCategory"    column="product_category"    />
+        <result property="productStock"    column="product_stock"    />
+        <result property="warehouseId"    column="warehouse_id"    />
+        <result property="unitPrice"    column="unit_price"    />
+        <result property="purchasePrice"    column="purchase_price"    />
+        <result property="alarmThreshold"    column="alarm_threshold"    />
+        <result property="isalarm"    column="isalarm"    />
+        <result property="tenantId"    column="tenant_id"    />
+        <result property="createdBy"    column="created_by"    />
+        <result property="createdTime"    column="created_time"    />
+        <result property="lastModifiedBy"    column="last_modified_by"    />
+        <result property="lastModifiedTime"    column="last_modified_time"    />
+    </resultMap>
+
+    <sql id="selectBizSaleProductVo">
+        select product_id, product_number, product_name, product_unit, product_category, product_stock, warehouse_id, unit_price, purchase_price, alarm_threshold, isalarm, tenant_id, created_by, created_time, last_modified_by, last_modified_time from biz_product
+    </sql>
+
+    <select id="selectBizSaleProductList" parameterType="BizSaleProduct" resultMap="BizSaleProductResult">
+        <include refid="selectBizSaleProductVo"/>
+        <where>  
+            <if test="productNumber != null  and productNumber != ''"> and product_number = #{productNumber}</if>
+            <if test="productName != null  and productName != ''"> and product_name like concat('%', #{productName}, '%')</if>
+            <if test="productUnit != null  and productUnit != ''"> and product_unit = #{productUnit}</if>
+            <if test="productCategory != null  and productCategory != ''"> and product_category = #{productCategory}</if>
+            <if test="productStock != null "> and product_stock = #{productStock}</if>
+            <if test="warehouseId != null "> and warehouse_id = #{warehouseId}</if>
+            <if test="unitPrice != null "> and unit_price = #{unitPrice}</if>
+            <if test="purchasePrice != null "> and purchase_price = #{purchasePrice}</if>
+            <if test="alarmThreshold != null "> and alarm_threshold = #{alarmThreshold}</if>
+            <if test="isalarm != null "> and isalarm = #{isalarm}</if>
+            <if test="tenantId != null "> and tenant_id = #{tenantId}</if>
+            <if test="createdBy != null  and createdBy != ''"> and created_by = #{createdBy}</if>
+            <if test="createdTime != null "> and created_time = #{createdTime}</if>
+            <if test="lastModifiedBy != null  and lastModifiedBy != ''"> and last_modified_by = #{lastModifiedBy}</if>
+            <if test="lastModifiedTime != null "> and last_modified_time = #{lastModifiedTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectBizSaleProductByProductId" parameterType="Long" resultMap="BizSaleProductResult">
+        <include refid="selectBizSaleProductVo"/>
+        where product_id = #{productId}
+    </select>
+        
+    <insert id="insertBizSaleProduct" parameterType="BizSaleProduct" useGeneratedKeys="true" keyProperty="productId">
+        insert into biz_product
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="productNumber != null and productNumber != ''">product_number,</if>
+            <if test="productName != null">product_name,</if>
+            <if test="productUnit != null">product_unit,</if>
+            <if test="productCategory != null and productCategory != ''">product_category,</if>
+            <if test="productStock != null">product_stock,</if>
+            <if test="warehouseId != null">warehouse_id,</if>
+            <if test="unitPrice != null">unit_price,</if>
+            <if test="purchasePrice != null">purchase_price,</if>
+            <if test="alarmThreshold != null">alarm_threshold,</if>
+            <if test="isalarm != null">isalarm,</if>
+            <if test="tenantId != null">tenant_id,</if>
+            <if test="createdBy != null">created_by,</if>
+            <if test="createdTime != null">created_time,</if>
+            <if test="lastModifiedBy != null">last_modified_by,</if>
+            <if test="lastModifiedTime != null">last_modified_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="productNumber != null and productNumber != ''">#{productNumber},</if>
+            <if test="productName != null">#{productName},</if>
+            <if test="productUnit != null">#{productUnit},</if>
+            <if test="productCategory != null and productCategory != ''">#{productCategory},</if>
+            <if test="productStock != null">#{productStock},</if>
+            <if test="warehouseId != null">#{warehouseId},</if>
+            <if test="unitPrice != null">#{unitPrice},</if>
+            <if test="purchasePrice != null">#{purchasePrice},</if>
+            <if test="alarmThreshold != null">#{alarmThreshold},</if>
+            <if test="isalarm != null">#{isalarm},</if>
+            <if test="tenantId != null">#{tenantId},</if>
+            <if test="createdBy != null">#{createdBy},</if>
+            <if test="createdTime != null">#{createdTime},</if>
+            <if test="lastModifiedBy != null">#{lastModifiedBy},</if>
+            <if test="lastModifiedTime != null">#{lastModifiedTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBizSaleProduct" parameterType="BizSaleProduct">
+        update biz_product
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="productNumber != null and productNumber != ''">product_number = #{productNumber},</if>
+            <if test="productName != null">product_name = #{productName},</if>
+            <if test="productUnit != null">product_unit = #{productUnit},</if>
+            <if test="productCategory != null and productCategory != ''">product_category = #{productCategory},</if>
+            <if test="productStock != null">product_stock = #{productStock},</if>
+            <if test="warehouseId != null">warehouse_id = #{warehouseId},</if>
+            <if test="unitPrice != null">unit_price = #{unitPrice},</if>
+            <if test="purchasePrice != null">purchase_price = #{purchasePrice},</if>
+            <if test="alarmThreshold != null">alarm_threshold = #{alarmThreshold},</if>
+            <if test="isalarm != null">isalarm = #{isalarm},</if>
+            <if test="tenantId != null">tenant_id = #{tenantId},</if>
+            <if test="createdBy != null">created_by = #{createdBy},</if>
+            <if test="createdTime != null">created_time = #{createdTime},</if>
+            <if test="lastModifiedBy != null">last_modified_by = #{lastModifiedBy},</if>
+            <if test="lastModifiedTime != null">last_modified_time = #{lastModifiedTime},</if>
+        </trim>
+        where product_id = #{productId}
+    </update>
+
+    <delete id="deleteBizSaleProductByProductId" parameterType="Long">
+        delete from biz_product where product_id = #{productId}
+    </delete>
+
+    <delete id="deleteBizSaleProductByProductIds" parameterType="String">
+        delete from biz_product where product_id in 
+        <foreach item="productId" collection="array" open="(" separator="," close=")">
+            #{productId}
+        </foreach>
+    </delete>
+</mapper>

@@ -7,7 +7,7 @@ import com.shopmanagement.biz.domain.BizMemo;
  * 备忘录信息Service接口
  * 
  * @author zr
- * @date 2024-01-19
+ * @date 2024-02-27
  */
 public interface IBizMemoService 
 {

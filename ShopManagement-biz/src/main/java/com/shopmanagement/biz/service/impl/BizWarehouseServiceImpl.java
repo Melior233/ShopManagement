@@ -1,7 +1,7 @@
 package com.shopmanagement.biz.service.impl;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import com.shopmanagement.biz.mapper.BizWarehouseMapper;
 import com.shopmanagement.biz.domain.BizWarehouse;
@@ -11,13 +11,16 @@ import com.shopmanagement.biz.service.IBizWarehouseService;
  * 仓库信息Service业务层处理
  * 
  * @author zr
- * @date 2024-01-19
+ * @date 2024-02-27
  */
 @Service
 public class BizWarehouseServiceImpl implements IBizWarehouseService 
 {
-    @Autowired
-    private BizWarehouseMapper bizWarehouseMapper;
+    private final BizWarehouseMapper bizWarehouseMapper;
+
+    public BizWarehouseServiceImpl(BizWarehouseMapper bizWarehouseMapper) {
+        this.bizWarehouseMapper = bizWarehouseMapper;
+    }
 
     /**
      * 查询仓库信息

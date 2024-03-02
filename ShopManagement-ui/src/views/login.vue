@@ -7,7 +7,7 @@
       <div class="card-right-side">
         <div class="card-right-side-head">
           <div class="logo">
-            <img src="../assets/images/logo-dark.svg" />
+            <!-- <img src="../assets/images/logo-dark.svg" /> -->
             <h1>商铺管理系统</h1>
           </div>
         </div>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shopmanagement.biz.mapper.BizOrderDetailMapper">
+    
+    <resultMap type="BizOrderDetail" id="BizOrderDetailResult">
+        <result property="orderDetailId"    column="order_detail_id"    />
+        <result property="orderId"    column="order_id"    />
+        <result property="productName"    column="product_name"    />
+        <result property="warehouseName"    column="warehouse_name"    />
+        <result property="quantity"    column="quantity"    />
+        <result property="unitPrice"    column="unit_price"    />
+        <result property="subtotal"    column="subtotal"    />
+        <result property="isReturned"    column="is_returned"    />
+        <result property="remark"    column="remark"    />
+        <result property="tenantId"    column="tenant_id"    />
+        <result property="createdBy"    column="created_by"    />
+        <result property="createdTime"    column="created_time"    />
+        <result property="lastModifiedBy"    column="last_modified_by"    />
+        <result property="lastModifiedTime"    column="last_modified_time"    />
+    </resultMap>
+
+    <sql id="selectBizOrderDetailVo">
+        select order_detail_id, order_id, product_name, warehouse_name, quantity, unit_price, subtotal, is_returned,remark, tenant_id, created_by, created_time, last_modified_by, last_modified_time from biz_order_detail
+    </sql>
+
+    <select id="selectBizOrderDetailList" parameterType="BizOrderDetail" resultMap="BizOrderDetailResult">
+        <include refid="selectBizOrderDetailVo"/>
+        <where>  
+            <if test="productName != null  and productName != ''"> and product_name like concat('%', #{productName}, '%')</if>
+            <if test="warehouseName != null  and warehouseName != ''"> and warehouse_name like concat('%', #{warehouseName}, '%')</if>
+            <if test="quantity != null "> and quantity = #{quantity}</if>
+            <if test="unitPrice != null "> and unit_price = #{unitPrice}</if>
+            <if test="subtotal != null "> and subtotal = #{subtotal}</if>
+            <if test="isReturned != null "> and is_returned = #{isReturned}</if>
+        </where>
+    </select>
+    
+    <select id="selectBizOrderDetailByOrderDetailId" parameterType="Long" resultMap="BizOrderDetailResult">
+        <include refid="selectBizOrderDetailVo"/>
+        where order_detail_id = #{orderDetailId}
+    </select>
+    <select id="selectBizOrderDetailListByOrderId" parameterType="Long" resultMap="BizOrderDetailResult">
+        <include refid="selectBizOrderDetailVo"/>
+        where order_id = #{orderId}
+    </select>
+
+    <insert id="insertBizOrderDetail" parameterType="BizOrderDetail" useGeneratedKeys="true" keyProperty="orderDetailId">
+        insert into biz_order_detail
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">order_id,</if>
+            <if test="productName != null">product_name,</if>
+            <if test="warehouseName != null">warehouse_name,</if>
+            <if test="quantity != null">quantity,</if>
+            <if test="unitPrice != null">unit_price,</if>
+            <if test="subtotal != null">subtotal,</if>
+            <if test="isReturned != null">is_returned,</if>
+            <if test="tenantId != null">tenant_id,</if>
+            <if test="createdBy != null">created_by,</if>
+            <if test="createdTime != null">created_time,</if>
+            <if test="lastModifiedBy != null">last_modified_by,</if>
+            <if test="lastModifiedTime != null">last_modified_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">#{orderId},</if>
+            <if test="productName != null">#{productName},</if>
+            <if test="warehouseName != null">#{warehouseName},</if>
+            <if test="quantity != null">#{quantity},</if>
+            <if test="unitPrice != null">#{unitPrice},</if>
+            <if test="subtotal != null">#{subtotal},</if>
+            <if test="isReturned != null">#{isReturned},</if>
+            <if test="tenantId != null">#{tenantId},</if>
+            <if test="createdBy != null">#{createdBy},</if>
+            <if test="createdTime != null">#{createdTime},</if>
+            <if test="lastModifiedBy != null">#{lastModifiedBy},</if>
+            <if test="lastModifiedTime != null">#{lastModifiedTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBizOrderDetail" parameterType="BizOrderDetail">
+        update biz_order_detail
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="orderId != null">order_id = #{orderId},</if>
+            <if test="productName != null">product_name = #{productName},</if>
+            <if test="warehouseName != null">warehouse_name = #{warehouseName},</if>
+            <if test="quantity != null">quantity = #{quantity},</if>
+            <if test="unitPrice != null">unit_price = #{unitPrice},</if>
+            <if test="subtotal != null">subtotal = #{subtotal},</if>
+            <if test="isReturned != null">is_returned = #{isReturned},</if>
+            <if test="tenantId != null">tenant_id = #{tenantId},</if>
+            <if test="createdBy != null">created_by = #{createdBy},</if>
+            <if test="createdTime != null">created_time = #{createdTime},</if>
+            <if test="lastModifiedBy != null">last_modified_by = #{lastModifiedBy},</if>
+            <if test="lastModifiedTime != null">last_modified_time = #{lastModifiedTime},</if>
+        </trim>
+        where order_detail_id = #{orderDetailId}
+    </update>
+
+    <delete id="deleteBizOrderDetailByOrderDetailId" parameterType="Long">
+        delete from biz_order_detail where order_detail_id = #{orderDetailId}
+    </delete>
+
+    <delete id="deleteBizOrderDetailByOrderDetailIds" parameterType="String">
+        delete from biz_order_detail where order_detail_id in 
+        <foreach item="orderDetailId" collection="array" open="(" separator="," close=")">
+            #{orderDetailId}
+        </foreach>
+    </delete>
+</mapper>

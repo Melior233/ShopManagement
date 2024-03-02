@@ -48,7 +48,7 @@
       <el-form-item label="是否入库" prop="isInbound">
         <el-select v-model="queryParams.isInbound" placeholder="请选择是否入库" clearable>
           <el-option
-            v-for="dict in dict.type.sys_yes_no"
+            v-for="dict in dict.type.biz_is_inbound"
             :key="dict.value"
             :label="dict.label"
             :value="dict.value"
@@ -109,8 +109,6 @@
 
     <el-table v-loading="loading" :data="listList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="入库清单ID" align="center" prop="inboundListId" />
-      <el-table-column label="仓库ID" align="center" prop="warehouseId" />
       <el-table-column label="仓库名称" align="center" prop="warehouseName" />
       <el-table-column label="入库商品名称" align="center" prop="productName" />
       <el-table-column label="入库商品类别" align="center" prop="productCategory">
@@ -121,7 +119,7 @@
       <el-table-column label="入库商品数量" align="center" prop="productQuantity" />
       <el-table-column label="入库商品总价" align="center" prop="productTotalPrice" />
       <el-table-column label="入库规格" align="center" prop="productSpecification" />
-      <el-table-column label="入库姓名" align="center" prop="inboundPersonName" />
+      <el-table-column label="入库人姓名" align="center" prop="inboundPersonName" />
       <el-table-column label="供应商名称" align="center" prop="supplierName" />
       <el-table-column label="质检状态" align="center" prop="qualityInspectionStatus">
         <template slot-scope="scope">
@@ -130,7 +128,7 @@
       </el-table-column>
       <el-table-column label="是否入库" align="center" prop="isInbound">
         <template slot-scope="scope">
-          <dict-tag :options="dict.type.sys_yes_no" :value="scope.row.isInbound"/>
+          <dict-tag :options="dict.type.biz_is_inbound" :value="scope.row.isInbound"/>
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
@@ -152,7 +150,7 @@
         </template>
       </el-table-column>
     </el-table>
-    
+
     <pagination
       v-show="total>0"
       :total="total"
@@ -192,8 +190,8 @@
         <el-form-item label="入库规格" prop="productSpecification">
           <el-input v-model="form.productSpecification" placeholder="请输入入库规格" />
         </el-form-item>
-        <el-form-item label="入库姓名" prop="inboundPersonName">
-          <el-input v-model="form.inboundPersonName" placeholder="请输入入库姓名" />
+        <el-form-item label="入库人姓名" prop="inboundPersonName">
+          <el-input v-model="form.inboundPersonName" placeholder="请输入入库人姓名" />
         </el-form-item>
         <el-form-item label="供应商名称" prop="supplierName">
           <el-input v-model="form.supplierName" placeholder="请输入供应商名称" />
@@ -211,37 +209,12 @@
         <el-form-item label="是否入库" prop="isInbound">
           <el-select v-model="form.isInbound" placeholder="请选择是否入库">
             <el-option
-              v-for="dict in dict.type.sys_yes_no"
+              v-for="dict in dict.type.biz_is_inbound"
               :key="dict.value"
               :label="dict.label"
               :value="parseInt(dict.value)"
             ></el-option>
           </el-select>
-        </el-form-item>
-        <el-form-item label="租户ID" prop="tenantId">
-          <el-input v-model="form.tenantId" placeholder="请输入租户ID" />
-        </el-form-item>
-        <el-form-item label="创建者" prop="createdBy">
-          <el-input v-model="form.createdBy" placeholder="请输入创建者" />
-        </el-form-item>
-        <el-form-item label="创建时间" prop="createdTime">
-          <el-date-picker clearable
-            v-model="form.createdTime"
-            type="date"
-            value-format="yyyy-MM-dd"
-            placeholder="请选择创建时间">
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item label="最后修改者" prop="lastModifiedBy">
-          <el-input v-model="form.lastModifiedBy" placeholder="请输入最后修改者" />
-        </el-form-item>
-        <el-form-item label="最后修改时间" prop="lastModifiedTime">
-          <el-date-picker clearable
-            v-model="form.lastModifiedTime"
-            type="date"
-            value-format="yyyy-MM-dd"
-            placeholder="请选择最后修改时间">
-          </el-date-picker>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -257,7 +230,7 @@ import { listList, getList, delList, addList, updateList } from "@/api/biz/list"
 
 export default {
   name: "List",
-  dicts: ['sys_yes_no', 'biz_quality', 'biz_product_category'],
+  dicts: ['biz_is_inbound', 'biz_quality', 'biz_product_category'],
   data() {
     return {
       // 遮罩层

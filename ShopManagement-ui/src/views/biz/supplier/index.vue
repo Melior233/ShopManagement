@@ -103,7 +103,7 @@
         </template>
       </el-table-column>
     </el-table>
-    
+
     <pagination
       v-show="total>0"
       :total="total"
@@ -126,31 +126,6 @@
         </el-form-item>
         <el-form-item label="供应商地址" prop="supplierAddress">
           <el-input v-model="form.supplierAddress" placeholder="请输入供应商地址" />
-        </el-form-item>
-        <el-form-item label="租户ID" prop="tenantId">
-          <el-input v-model="form.tenantId" placeholder="请输入租户ID" />
-        </el-form-item>
-        <el-form-item label="创建者" prop="createdBy">
-          <el-input v-model="form.createdBy" placeholder="请输入创建者" />
-        </el-form-item>
-        <el-form-item label="创建时间" prop="createdTime">
-          <el-date-picker clearable
-            v-model="form.createdTime"
-            type="date"
-            value-format="yyyy-MM-dd"
-            placeholder="请选择创建时间">
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item label="最后修改者" prop="lastModifiedBy">
-          <el-input v-model="form.lastModifiedBy" placeholder="请输入最后修改者" />
-        </el-form-item>
-        <el-form-item label="最后修改时间" prop="lastModifiedTime">
-          <el-date-picker clearable
-            v-model="form.lastModifiedTime"
-            type="date"
-            value-format="yyyy-MM-dd"
-            placeholder="请选择最后修改时间">
-          </el-date-picker>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">

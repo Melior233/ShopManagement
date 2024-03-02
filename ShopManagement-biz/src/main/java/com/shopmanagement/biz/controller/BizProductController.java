@@ -25,7 +25,7 @@ import com.shopmanagement.common.core.page.TableDataInfo;
  * 商品信息管理Controller
  * 
  * @author zr
- * @date 2024-01-19
+ * @date 2024-03-02
  */
 @RestController
 @RequestMapping("/biz/product")

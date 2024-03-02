@@ -11,7 +11,7 @@ import com.shopmanagement.biz.service.IBizProductService;
  * 商品信息管理Service业务层处理
  * 
  * @author zr
- * @date 2024-01-19
+ * @date 2024-03-02
  */
 @Service
 public class BizProductServiceImpl implements IBizProductService 

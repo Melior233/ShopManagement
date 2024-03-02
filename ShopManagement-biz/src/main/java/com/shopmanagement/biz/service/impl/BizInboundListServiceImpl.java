@@ -1,7 +1,7 @@
 package com.shopmanagement.biz.service.impl;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import com.shopmanagement.biz.mapper.BizInboundListMapper;
 import com.shopmanagement.biz.domain.BizInboundList;
@@ -11,13 +11,16 @@ import com.shopmanagement.biz.service.IBizInboundListService;
  * 入库清单管理Service业务层处理
  * 
  * @author zr
- * @date 2024-01-19
+ * @date 2024-02-27
  */
 @Service
 public class BizInboundListServiceImpl implements IBizInboundListService 
 {
-    @Autowired
-    private BizInboundListMapper bizInboundListMapper;
+    private final BizInboundListMapper bizInboundListMapper;
+
+    public BizInboundListServiceImpl(BizInboundListMapper bizInboundListMapper) {
+        this.bizInboundListMapper = bizInboundListMapper;
+    }
 
     /**
      * 查询入库清单管理

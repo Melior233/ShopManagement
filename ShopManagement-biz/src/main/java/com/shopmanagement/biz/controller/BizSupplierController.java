@@ -3,7 +3,6 @@ package com.shopmanagement.biz.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -25,14 +24,17 @@ import com.shopmanagement.common.core.page.TableDataInfo;
  * 供应商信息Controller
  * 
  * @author zr
- * @date 2024-01-19
+ * @date 2024-02-27
  */
 @RestController
 @RequestMapping("/biz/supplier")
 public class BizSupplierController extends BaseController
 {
-    @Autowired
-    private IBizSupplierService bizSupplierService;
+    private final IBizSupplierService bizSupplierService;
+
+    public BizSupplierController(IBizSupplierService bizSupplierService) {
+        this.bizSupplierService = bizSupplierService;
+    }
 
     /**
      * 查询供应商信息列表
