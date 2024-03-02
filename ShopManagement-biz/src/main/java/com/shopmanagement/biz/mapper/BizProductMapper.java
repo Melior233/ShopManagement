@@ -58,4 +58,11 @@ public interface BizProductMapper
      * @return 结果
      */
     public int deleteBizProductByProductIds(Long[] productIds);
+
+    /**
+     * 根据仓库id查询商品信息
+     * @param warehouseId
+     * @return
+     */
+    List<BizProduct> selectBizProductByWarehouseId(int warehouseId);
 }

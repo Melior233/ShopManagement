@@ -58,4 +58,17 @@ public interface IBizProductService
      * @return 结果
      */
     public int deleteBizProductByProductId(Long productId);
+
+    /**
+     * 开启库存告警
+     * @param bizProduct
+     * @return
+     */
+    public int updateBizProductAlarm(BizProduct bizProduct);
+
+    /**
+     * 同步仓库商品信息
+     * @return
+     */
+    public int synchronizeProduct();
 }

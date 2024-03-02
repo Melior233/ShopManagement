@@ -52,7 +52,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectBizProductVo"/>
         where product_id = #{productId}
     </select>
-        
+    <select id="selectBizProductByWarehouseId" resultMap="BizProductResult">
+        <include refid="selectBizProductVo"/>
+        where warehouse_id = #{warehouseId}
+    </select>
+
     <insert id="insertBizProduct" parameterType="BizProduct" useGeneratedKeys="true" keyProperty="productId">
         insert into biz_product
         <trim prefix="(" suffix=")" suffixOverrides=",">

@@ -7,86 +7,14 @@
     <list default="true" id="904143f6-cc8e-4043-8624-f50764469c18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopManagement-admin/src/main/resources/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-admin/src/main/resources/application-druid.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-admin/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-admin/src/main/resources/banner.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-admin/src/main/resources/banner.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/controller/BizInboundListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/controller/BizInboundListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/controller/BizMemoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/controller/BizMemoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/controller/BizProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/controller/BizProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/controller/BizSupplierController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/controller/BizSupplierController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/controller/BizVipCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/controller/BizVipCustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/controller/BizWarehouseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/controller/BizWarehouseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/domain/BizInboundList.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/domain/BizInboundList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/domain/BizMemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/domain/BizMemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/domain/BizProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/domain/BizProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/domain/BizSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/domain/BizSupplier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/domain/BizVipCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/domain/BizVipCustomer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/domain/BizWarehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/domain/BizWarehouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/mapper/BizInboundListMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/mapper/BizInboundListMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/mapper/BizMemoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/mapper/BizMemoMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/mapper/BizProductMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/mapper/BizProductMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/mapper/BizSupplierMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/mapper/BizSupplierMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/mapper/BizVipCustomerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/mapper/BizVipCustomerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/mapper/BizWarehouseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/mapper/BizWarehouseMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/IBizInboundListService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/IBizInboundListService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/IBizMemoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/IBizMemoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/IBizProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/IBizProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/IBizSupplierService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/IBizSupplierService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/IBizVipCustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/IBizVipCustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/IBizWarehouseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/IBizWarehouseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/impl/BizInboundListServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/impl/BizInboundListServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/impl/BizMemoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/impl/BizMemoServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/impl/BizProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/impl/BizProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/impl/BizSupplierServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/impl/BizSupplierServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/impl/BizVipCustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/impl/BizVipCustomerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/impl/BizWarehouseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/impl/BizWarehouseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/controller/BizInboundListController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/controller/BizMemoController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/controller/BizProductController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/controller/BizSupplierController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/controller/BizVipCustomerController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/controller/BizWarehouseController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/domain/BizInboundList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/domain/BizMemo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/domain/BizProduct.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/domain/BizSupplier.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/domain/BizVipCustomer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/domain/BizWarehouse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/mapper/BizInboundListMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/mapper/BizMemoMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/mapper/BizProductMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/mapper/BizSupplierMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/mapper/BizVipCustomerMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/mapper/BizWarehouseMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/service/IBizInboundListService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/service/IBizMemoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/service/IBizProductService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/service/IBizSupplierService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/service/IBizVipCustomerService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/service/IBizWarehouseService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/service/impl/BizInboundListServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/service/impl/BizMemoServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/service/impl/BizProductServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/service/impl/BizSupplierServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/service/impl/BizVipCustomerServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/java/com/shopmanagement/biz/service/impl/BizWarehouseServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/resources/mapper/biz/BizInboundListMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/resources/mapper/biz/BizMemoMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/resources/mapper/biz/BizProductMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/resources/mapper/biz/BizSupplierMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/resources/mapper/biz/BizVipCustomerMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/main/resources/mapper/biz/BizWarehouseMapper.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/resources/mapper/biz/BizProductMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/resources/mapper/biz/BizProductMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-ui/src/api/biz/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-ui/src/api/biz/order.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/customer/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/customer/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/list/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/list/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/memo/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/memo/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/order/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/order/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/product/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/product/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/supplier/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/supplier/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/warehouse/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/warehouse/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-ui/src/views/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-ui/src/views/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-ui/src/views/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-ui/src/views/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopManagement-ui/src/api/biz/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-ui/src/api/biz/product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopManagement-ui/src/api/biz/shelfManagement.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-ui/src/api/biz/shelfManagement.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/shelfManagement/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/shelfManagement/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +134,7 @@
       <workItem from="1709133292872" duration="1266000" />
       <workItem from="1709171020062" duration="9299000" />
       <workItem from="1709285853855" duration="1603000" />
-      <workItem from="1709345480765" duration="4587000" />
+      <workItem from="1709345480765" duration="12550000" />
     </task>
     <servers />
   </component>

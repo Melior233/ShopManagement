@@ -101,4 +101,26 @@ public class BizProductController extends BaseController
     {
         return toAjax(bizProductService.deleteBizProductByProductIds(productIds));
     }
+
+    /**
+     * 开启库存告警
+     */
+    @PreAuthorize("@ss.hasPermi('biz:product:edit')")
+    @Log(title = "商品信息管理", businessType = BusinessType.INSERT)
+    @PutMapping("/openalarm")
+    public AjaxResult openalarm(@RequestBody BizProduct bizProduct)
+    {
+        return toAjax(bizProductService.updateBizProductAlarm(bizProduct));
+    }
+
+    /**
+     * 同步仓库商品
+     */
+    @PreAuthorize("@ss.hasPermi('biz:product:add')")
+    @Log(title = "商品信息管理", businessType = BusinessType.INSERT)
+    @PostMapping("/synchronizeProduct")
+    public AjaxResult synchronuzeProduct()
+    {
+        return toAjax(bizProductService.synchronizeProduct());
+    }
 }

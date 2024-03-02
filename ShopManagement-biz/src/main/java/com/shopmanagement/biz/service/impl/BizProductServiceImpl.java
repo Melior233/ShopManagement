@@ -1,6 +1,12 @@
 package com.shopmanagement.biz.service.impl;
 
+import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.shopmanagement.biz.mapper.BizProductMapper;
@@ -89,5 +95,72 @@ public class BizProductServiceImpl implements IBizProductService
     public int deleteBizProductByProductId(Long productId)
     {
         return bizProductMapper.deleteBizProductByProductId(productId);
+    }
+
+    /**
+     * 开启库存告警
+     *
+     * @param bizProduct 商品信息管理
+     * @return 结果
+     */
+    @Override
+    public int updateBizProductAlarm(BizProduct bizProduct) {
+        List<BizProduct> products=bizProductMapper.selectBizProductByWarehouseId(0);
+        products.stream().forEach(product->{
+            if(bizProduct.getAlarmThreshold()==0){
+                product.setIsalarm(0);
+                product.setAlarmThreshold(bizProduct.getAlarmThreshold());
+            }else{
+                product.setIsalarm(1);
+                product.setAlarmThreshold(bizProduct.getAlarmThreshold());
+            }
+            bizProductMapper.updateBizProduct(product);
+        });
+        return products.size();
+    }
+
+    /**
+     * 货架同步仓库商品信息
+     * @return
+     */
+    @Override
+    public int synchronizeProduct() {
+        List<BizProduct> bizProducts = bizProductMapper.selectBizProductByWarehouseId(0);
+        List<BizProduct> collect = bizProductMapper.selectBizProductList(null).stream().filter(bizProduct -> {
+            return !bizProduct.getWarehouseId().equals(0);
+        }).collect(Collectors.toList());
+        // 遍历collect列表
+        for (BizProduct collectProduct : collect) {
+            boolean isNameUnique = true;
+            // 遍历bizProducts列表
+            for (BizProduct bizProduct : bizProducts) {
+                if (collectProduct.getProductName().equals(bizProduct.getProductName())) {
+                    isNameUnique = false;
+                    break;
+                }
+            }
+            // 如果name属性不重复，则打印该元素
+            if (isNameUnique) {
+                BizProduct bizProduct = new BizProduct();
+                bizProduct.setProductName(collectProduct.getProductName());
+                bizProduct.setProductCategory(collectProduct.getProductCategory());
+                bizProduct.setProductNumber(collectProduct.getProductNumber());
+                bizProduct.setProductStock(0L);
+                bizProduct.setIsalarm(bizProducts.get(0).getIsalarm());
+                bizProduct.setUnitPrice(collectProduct.getUnitPrice());
+                bizProduct.setPurchasePrice(collectProduct.getPurchasePrice());
+                bizProduct.setProductUnit(collectProduct.getProductUnit());
+                bizProduct.setWarehouseId(0L);
+                bizProduct.setAlarmThreshold(bizProducts.get(0).getAlarmThreshold());
+                bizProduct.setTenantId(1L);
+                bizProduct.setParams(collectProduct.getParams());
+                bizProduct.setLastModifiedTime(new java.util.Date());
+                bizProduct.setLastModifiedBy("admin");
+                bizProduct.setCreateBy("admin");
+                bizProduct.setCreatedTime(new java.util.Date());
+                bizProductMapper.insertBizProduct(bizProduct);
+            }
+        }
+        return 1;
     }
 }
