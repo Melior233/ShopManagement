@@ -42,3 +42,20 @@ export function delProduct(productId) {
     method: 'delete'
   })
 }
+
+// 开启库存告警
+export function openAlarm(data) {
+  return request({
+    url: '/biz/product/openalarm',
+    method: 'put',
+    data: data
+  })
+}
+
+// 同步仓库商品
+export function synchronizeProduct() {
+  return request({
+    url: '/biz/product/synchronizeProduct',
+    method: 'post'
+  })
+}

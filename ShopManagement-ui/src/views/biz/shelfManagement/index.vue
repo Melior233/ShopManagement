@@ -58,9 +58,19 @@
           plain
           icon="el-icon-plus"
           size="mini"
-          @click="handleAdd"
+          @click="handleSynchronize"
           v-hasPermi="['biz:product:add']"
-        >新增</el-button>
+        >同步仓库商品</el-button>
+      </el-col>
+      <el-col :span="1.5">
+        <el-button
+          type="success"
+          plain
+          icon="el-icon-add"
+          size="mini"
+          @click="handleAlram"
+          v-hasPermi="['biz:product:edit']"
+        >一键开启告警</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -197,11 +207,23 @@
         <el-button @click="cancel">取 消</el-button>
       </div>
     </el-dialog>
+     <!-- 开启告警对话框 -->
+     <el-dialog :title="title" :visible.sync="alarmopen" width="500px" append-to-body>
+      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
+        <el-form-item label="告警阈值" prop="alarmThreshold">
+          <el-input v-model="form.alarmThreshold" placeholder="请输入告警阈值" />
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="submitAlarmForm">开启告警</el-button>
+        <el-button @click="cancel">取 消</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-import { listProduct, getProduct, delProduct, addProduct, updateProduct } from "@/api/biz/product";
+import { listProduct, getProduct, delProduct, addProduct, updateProduct, openAlarm,synchronizeProduct } from "@/api/biz/product";
 
 export default {
   name: "Product",
@@ -226,6 +248,8 @@ export default {
       title: "",
       // 是否显示弹出层
       open: false,
+      // 是否显示告警阈值配置弹出层
+      alarmopen: false,
       // 查询参数
       queryParams: {
         pageNum: 1,
@@ -274,7 +298,11 @@ export default {
     },
     // 取消按钮
     cancel() {
-      this.open = false;
+      if(this.open==true){
+        this.open = false;
+      }else if(this.alarmopen==true){
+        this.alarmopen = false;
+      }
       this.reset();
     },
     // 表单重置
@@ -331,6 +359,12 @@ export default {
         this.title = "修改商品信息管理";
       });
     },
+   /** 一键开启告警按钮操作 */
+   handleAlram() {
+      this.reset();
+      this.alarmopen = true;
+      this.title = "告警阈值设置";
+    },
     /** 提交按钮 */
     submitForm() {
       this.$refs["form"].validate(valid => {
@@ -351,6 +385,20 @@ export default {
         }
       });
     },
+    /** 开启告警按钮 */
+    submitAlarmForm() {
+      this.$refs["form"].validate(valid => {
+        if (valid) {
+           {
+            openAlarm(this.form).then(response => {
+              this.$modal.msgSuccess("告警已开启");
+              this.alarmopen = false;
+              this.getList();
+            });
+          }
+        }
+      });
+    },
     /** 删除按钮操作 */
     handleDelete(row) {
       const productIds = row.productId || this.ids;
@@ -360,6 +408,13 @@ export default {
         this.getList();
         this.$modal.msgSuccess("删除成功");
       }).catch(() => {});
+    },
+    /** 同步仓库商品 */
+    handleSynchronize(){
+      synchronizeProduct().then(response => {
+              this.$modal.msgSuccess("已同步仓库商品");
+              this.getList();
+            });
     },
     /** 导出按钮操作 */
     handleExport() {
