@@ -70,5 +70,5 @@ public interface IBizProductService
      * 同步仓库商品信息
      * @return
      */
-    public int synchronizeProduct();
+    public int synchronizeProduct(String username);
 }

@@ -121,6 +121,6 @@ public class BizProductController extends BaseController
     @PostMapping("/synchronizeProduct")
     public AjaxResult synchronuzeProduct()
     {
-        return toAjax(bizProductService.synchronizeProduct());
+        return toAjax(bizProductService.synchronizeProduct(getUsername()));
     }
 }

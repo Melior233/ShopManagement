@@ -124,7 +124,7 @@ public class BizProductServiceImpl implements IBizProductService
      * @return
      */
     @Override
-    public int synchronizeProduct() {
+    public int synchronizeProduct(String username) {
         List<BizProduct> bizProducts = bizProductMapper.selectBizProductByWarehouseId(0);
         List<BizProduct> collect = bizProductMapper.selectBizProductList(null).stream().filter(bizProduct -> {
             return !bizProduct.getWarehouseId().equals(0);
@@ -139,7 +139,7 @@ public class BizProductServiceImpl implements IBizProductService
                     break;
                 }
             }
-            // 如果name属性不重复，则打印该元素
+            // 如果仓库货架名是货架没有的，则添加商品到货架
             if (isNameUnique) {
                 BizProduct bizProduct = new BizProduct();
                 bizProduct.setProductName(collectProduct.getProductName());
@@ -155,8 +155,8 @@ public class BizProductServiceImpl implements IBizProductService
                 bizProduct.setTenantId(1L);
                 bizProduct.setParams(collectProduct.getParams());
                 bizProduct.setLastModifiedTime(new java.util.Date());
-                bizProduct.setLastModifiedBy("admin");
-                bizProduct.setCreateBy("admin");
+                bizProduct.setLastModifiedBy(username);
+                bizProduct.setCreateBy(username);
                 bizProduct.setCreatedTime(new java.util.Date());
                 bizProductMapper.insertBizProduct(bizProduct);
             }
