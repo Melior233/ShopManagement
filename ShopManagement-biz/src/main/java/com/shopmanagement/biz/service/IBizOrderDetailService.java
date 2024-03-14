@@ -58,4 +58,11 @@ public interface IBizOrderDetailService
      * @return 结果
      */
     public int deleteBizOrderDetailByOrderDetailId(Long orderDetailId);
+
+    /**
+     * 根据月份查询报表
+     * @param month
+     * @return 报表信息
+     */
+    public List findProductSummaries(String month);
 }

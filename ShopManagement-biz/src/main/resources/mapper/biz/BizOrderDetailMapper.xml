@@ -45,6 +45,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectBizOrderDetailVo"/>
         where order_id = #{orderId}
     </select>
+    <select id="findProductSummaries" resultType="java.util.Map">
+        select product_name,
+               sum(quantity) as quantity
+        from biz_order_detail
+        <if test="month != null">where created_time like concat(#{month}, '%')</if>
+        group by product_name
+    </select>
 
     <insert id="insertBizOrderDetail" parameterType="BizOrderDetail" useGeneratedKeys="true" keyProperty="orderDetailId">
         insert into biz_order_detail

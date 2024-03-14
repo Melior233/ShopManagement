@@ -103,4 +103,18 @@ public class BizOrderDetailController extends BaseController
     {
         return toAjax(bizOrderDetailService.deleteBizOrderDetailByOrderDetailIds(orderDetailIds));
     }
+
+    /**
+     * 查看统计报表
+     */
+    @PreAuthorize("@ss.hasPermi('biz:detail:list')")
+    @GetMapping("/list/productsummaries")
+    public AjaxResult findProductSummaries(String  month)
+    {
+        // todo
+        // 查出上月卖出商品
+        // 查出总利润
+        // 查出售卖量最多的前三个商品
+        return success(bizOrderDetailService.findProductSummaries(month));
+    }
 }

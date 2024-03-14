@@ -93,4 +93,10 @@ public class BizOrderDetailServiceImpl implements IBizOrderDetailService
     {
         return bizOrderDetailMapper.deleteBizOrderDetailByOrderDetailId(orderDetailId);
     }
+
+    @Override
+    public List findProductSummaries(String month) {
+        List list =bizOrderDetailMapper.findProductSummaries(month);
+        return list;
+    }
 }
