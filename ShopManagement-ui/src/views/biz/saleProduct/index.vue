@@ -17,14 +17,6 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="商品单位" prop="productUnit">
-        <el-input
-          v-model="queryParams.productUnit"
-          placeholder="请输入商品单位"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
       <el-form-item label="商品类别" prop="productCategory">
         <el-select v-model="queryParams.productCategory" placeholder="请选择商品类别" clearable>
           <el-option
@@ -35,96 +27,6 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="商品库存" prop="productStock">
-        <el-input
-          v-model="queryParams.productStock"
-          placeholder="请输入商品库存"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="商品所属仓库ID" prop="warehouseId">
-        <el-input
-          v-model="queryParams.warehouseId"
-          placeholder="请输入商品所属仓库ID"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="商品单价" prop="unitPrice">
-        <el-input
-          v-model="queryParams.unitPrice"
-          placeholder="请输入商品单价"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="商品进货价" prop="purchasePrice">
-        <el-input
-          v-model="queryParams.purchasePrice"
-          placeholder="请输入商品进货价"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="告警阈值" prop="alarmThreshold">
-        <el-input
-          v-model="queryParams.alarmThreshold"
-          placeholder="请输入告警阈值"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="是否告警" prop="isalarm">
-        <el-select v-model="queryParams.isalarm" placeholder="请选择是否告警" clearable>
-          <el-option
-            v-for="dict in dict.type.biz_is_inbound"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-          />
-        </el-select>
-      </el-form-item>
-      <el-form-item label="租户ID" prop="tenantId">
-        <el-input
-          v-model="queryParams.tenantId"
-          placeholder="请输入租户ID"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="创建者" prop="createdBy">
-        <el-input
-          v-model="queryParams.createdBy"
-          placeholder="请输入创建者"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="创建时间" prop="createdTime">
-        <el-date-picker clearable
-          v-model="queryParams.createdTime"
-          type="date"
-          value-format="yyyy-MM-dd"
-          placeholder="请选择创建时间">
-        </el-date-picker>
-      </el-form-item>
-      <el-form-item label="最后修改者" prop="lastModifiedBy">
-        <el-input
-          v-model="queryParams.lastModifiedBy"
-          placeholder="请输入最后修改者"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="最后修改时间" prop="lastModifiedTime">
-        <el-date-picker clearable
-          v-model="queryParams.lastModifiedTime"
-          type="date"
-          value-format="yyyy-MM-dd"
-          placeholder="请选择最后修改时间">
-        </el-date-picker>
-      </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -133,7 +35,7 @@
 
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
-        <el-button
+        <!-- <el-button
           type="primary"
           plain
           icon="el-icon-plus"
@@ -172,43 +74,21 @@
           size="mini"
           @click="handleExport"
           v-hasPermi="['biz:saleProduct:export']"
-        >导出</el-button>
+        >导出</el-button> -->
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
-    <el-table v-loading="loading" :data="saleProductList" @selection-change="handleSelectionChange">
+  <el-row :gutter="20">
+
+      <el-col :span="12">
+      <el-table v-loading="loading" :data="cartList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="商品ID" align="center" prop="productId" />
-      <el-table-column label="商品编号" align="center" prop="productNumber" />
       <el-table-column label="商品名称" align="center" prop="productName" />
-      <el-table-column label="商品单位" align="center" prop="productUnit" />
-      <el-table-column label="商品类别" align="center" prop="productCategory">
-        <template slot-scope="scope">
-          <dict-tag :options="dict.type.biz_product_category" :value="scope.row.productCategory"/>
-        </template>
-      </el-table-column>
-      <el-table-column label="商品库存" align="center" prop="productStock" />
-      <el-table-column label="商品所属仓库ID" align="center" prop="warehouseId" />
       <el-table-column label="商品单价" align="center" prop="unitPrice" />
-      <el-table-column label="商品进货价" align="center" prop="purchasePrice" />
-      <el-table-column label="告警阈值" align="center" prop="alarmThreshold" />
-      <el-table-column label="是否告警" align="center" prop="isalarm">
+      <el-table-column label="数量" align="center" prop="count" >
         <template slot-scope="scope">
-          <dict-tag :options="dict.type.biz_is_inbound" :value="scope.row.isalarm"/>
-        </template>
-      </el-table-column>
-      <el-table-column label="租户ID" align="center" prop="tenantId" />
-      <el-table-column label="创建者" align="center" prop="createdBy" />
-      <el-table-column label="创建时间" align="center" prop="createdTime" width="180">
-        <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.createdTime, '{y}-{m}-{d}') }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="最后修改者" align="center" prop="lastModifiedBy" />
-      <el-table-column label="最后修改时间" align="center" prop="lastModifiedTime" width="180">
-        <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.lastModifiedTime, '{y}-{m}-{d}') }}</span>
+            <span> x {{ scope.row.count }}</span>
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
@@ -216,21 +96,34 @@
           <el-button
             size="mini"
             type="text"
-            icon="el-icon-edit"
-            @click="handleUpdate(scope.row)"
-            v-hasPermi="['biz:saleProduct:edit']"
+            @click="handleEdit(scope.row)"
           >修改</el-button>
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-delete"
-            @click="handleDelete(scope.row)"
-            v-hasPermi="['biz:saleProduct:remove']"
-          >删除</el-button>
         </template>
       </el-table-column>
-    </el-table>
+      </el-table>
+      <el-row>
+        <el-col :span="12" style="text-align: center;">
+          <span>商品合计：{{ totalAmount }}</span>
+        </el-col>
+        <!-- <el-col :span="12">去支付</el-col> -->
+         <el-button
+          type="primary"
+          plain
+          size="mini"
+          @click="handleAdd"
+        >去支付</el-button>
+      </el-row>
+
+      </el-col>
+
     
+    <el-col :span="12">
+      <el-table v-loading="loading" :data="saleProductList" @selection-change="handleSelectionChange" @row-click="handleTableRowClick">
+      <!-- <el-table-column type="selection" width="55" align="center" /> -->
+      <el-table-column label="商品名称" align="center" prop="productName" />
+      <el-table-column label="商品库存" align="center" prop="productStock" />
+      <el-table-column label="商品单价" align="center" prop="unitPrice" />
+    </el-table>
     <pagination
       v-show="total>0"
       :total="total"
@@ -238,6 +131,10 @@
       :limit.sync="queryParams.pageSize"
       @pagination="getList"
     />
+    </el-col>
+  </el-row>
+    
+
 
     <!-- 添加或修改商品收银对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
@@ -317,11 +214,31 @@
         <el-button @click="cancel">取 消</el-button>
       </div>
     </el-dialog>
+
+        <!-- 修改商品数量 -->
+    <el-dialog title="修改商品数量" :visible.sync="editProCountOpne" width="500px" append-to-body>
+      <el-form ref="cartItemForm" :model="cartItemForm" label-width="80px">
+        <el-form-item label="商品名称" prop="productName">
+          <el-input v-model="cartItemForm.productName" disabled />
+        </el-form-item>
+        <el-form-item label="商品单价" prop="unitPrice">
+          <el-input v-model="cartItemForm.unitPrice" disabled/>
+        </el-form-item>
+        <el-form-item label="商品数量" prop="count">
+          <el-input v-model="cartItemForm.count" placeholder="请输入商品数量" />
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="submitCartItemForm">确 定</el-button>
+        <el-button @click="editProCountOpne  = false">取 消</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import { listSaleProduct, getSaleProduct, delSaleProduct, addSaleProduct, updateSaleProduct } from "@/api/biz/saleProduct";
+import { Alert } from "element-ui";
 
 export default {
   name: "SaleProduct",
@@ -337,13 +254,17 @@ export default {
       // 非多个禁用
       multiple: true,
       // 显示搜索条件
-      showSearch: true,
+      showSearch: false,
       // 总条数
       total: 0,
+      totalAmount: 0.0,
+      cartList: [],
       // 商品收银表格数据
       saleProductList: [],
       // 弹出层标题
       title: "",
+      cartItemForm: {},
+      editProCountOpne: false,
       // 是否显示弹出层
       open: false,
       // 查询参数
@@ -355,7 +276,7 @@ export default {
         productUnit: null,
         productCategory: null,
         productStock: null,
-        warehouseId: null,
+        warehouseId: 0,
         unitPrice: null,
         purchasePrice: null,
         alarmThreshold: null,
@@ -383,6 +304,48 @@ export default {
     this.getList();
   },
   methods: {
+    submitCartItemForm() {
+      for(let i = 0; i < this.cartList.length; i++) {
+          if (this.cartList[i].productId === this.cartItemForm.productId) {
+            this.cartList[i].count = parseInt(this.cartItemForm.count);
+            this.cartList = JSON.parse(JSON.stringify(this.cartList));
+            this.cartItemForm = {};
+            this.editProCountOpne = false;
+            return;
+          }
+        }
+    },
+    handleEdit(row) {
+        
+        this.cartItemForm.productName = row.productName;
+        this.cartItemForm.productUnit = row.productUnit;
+        this.cartItemForm.count = parseInt(row.count);
+        this.editProCountOpne = true;
+    },
+    handleTableRowClick(row, $index, event) {
+      if (this.cartList.length === 0) {
+          row.count = 1;
+          this.cartList.push(row);
+          this.totalAmount = this.totalAmount+row.unitPrice
+      }else {
+        let flag = true;
+        for(let i = 0; i < this.cartList.length; i++) {
+          if (this.cartList[i].productId === row.productId) {
+            this.cartList[i].count = parseInt(this.cartList[i].count) + 1;
+            this.cartList = JSON.parse(JSON.stringify(this.cartList));
+            flag = false;
+            this.totalAmount = this.totalAmount+row.unitPrice
+            return;
+          }
+        }
+        if (flag) {
+          row.count = 1;
+          this.cartList.push(row);
+          this.totalAmount = this.totalAmount+row.unitPrice
+        }
+      }
+    },
+
     /** 查询商品收银列表 */
     getList() {
       this.loading = true;

@@ -179,9 +179,6 @@
         <el-form-item label="商品库存" prop="productStock">
           <el-input v-model="form.productStock" placeholder="请输入商品库存" />
         </el-form-item>
-        <el-form-item label="商品所属仓库ID" prop="warehouseId">
-          <el-input v-model="form.warehouseId" placeholder="请输入商品所属仓库ID" />
-        </el-form-item>
         <el-form-item label="商品单价" prop="unitPrice">
           <el-input v-model="form.unitPrice" placeholder="请输入商品单价" />
         </el-form-item>

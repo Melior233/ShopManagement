@@ -5,16 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="904143f6-cc8e-4043-8624-f50764469c18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ShopManagement-admin/src/test/java/TestSummaries.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopManagement-admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-admin/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopManagement-admin/src/main/resources/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-admin/src/main/resources/application-druid.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/controller/BizProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/controller/BizProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/mapper/BizProductMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/mapper/BizProductMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/IBizProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/IBizProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/impl/BizProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/impl/BizProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/resources/mapper/biz/BizProductMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/resources/mapper/biz/BizProductMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-ui/src/api/biz/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-ui/src/api/biz/product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopManagement-ui/src/api/biz/shelfManagement.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-ui/src/api/biz/shelfManagement.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/controller/BizOrderDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/controller/BizOrderDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/mapper/BizOrderDetailMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/mapper/BizOrderDetailMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/IBizOrderDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/IBizOrderDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/impl/BizOrderDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/java/com/shopmanagement/biz/service/impl/BizOrderDetailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopManagement-biz/src/main/resources/mapper/biz/BizOrderDetailMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-biz/src/main/resources/mapper/biz/BizOrderDetailMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/saleProduct/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/saleProduct/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/shelfManagement/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/shelfManagement/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/warehouse/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ShopManagement-ui/src/views/biz/warehouse/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +69,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8 (3)&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/一个新的开始/first/ShopManagement/ShopManagement-ui/src&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/一个新的开始/first/ShopManagement/ShopManagement-admin/src&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -87,6 +89,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\一个新的开始\first\ShopManagement\ShopManagement-admin\src" />
       <recent name="D:\一个新的开始\first\ShopManagement\ShopManagement-ui\src" />
       <recent name="D:\一个新的开始\first\ShopManagement\ShopManagement-biz\src\main" />
       <recent name="D:\一个新的开始\first\ShopManagement\ShopManagement-biz" />
@@ -96,7 +99,27 @@
       <recent name="com.shopmanagement.biz.service.dto" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.RuoYiApplication">
+    <configuration name="MainTests.testSelectActivityById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ShopManagement-admin" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MainTests" />
+      <option name="METHOD_NAME" value="testSelectActivityById" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSummaries.testSelectActivityById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ShopManagement-admin" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestSummaries" />
+      <option name="METHOD_NAME" value="testSelectActivityById" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RuoYiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="ShopManagement-admin" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.shopmanagement.RuoYiApplication" />
@@ -104,6 +127,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestSummaries.testSelectActivityById" />
+        <item itemvalue="JUnit.MainTests.testSelectActivityById" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -135,6 +164,15 @@
       <workItem from="1709171020062" duration="9299000" />
       <workItem from="1709285853855" duration="1603000" />
       <workItem from="1709345480765" duration="12550000" />
+      <workItem from="1709365907952" duration="2965000" />
+      <workItem from="1709518446467" duration="5883000" />
+      <workItem from="1709603986874" duration="1803000" />
+      <workItem from="1709627504934" duration="990000" />
+      <workItem from="1710122795527" duration="8310000" />
+      <workItem from="1710216308532" duration="8133000" />
+      <workItem from="1710253942603" duration="710000" />
+      <workItem from="1710296028557" duration="1197000" />
+      <workItem from="1710342623000" duration="3056000" />
     </task>
     <servers />
   </component>
